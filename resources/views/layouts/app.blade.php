@@ -10,10 +10,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
-<body>
+<body class="c-app">
     @include('partials.sidebar')
 
-    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+    <div class="c-wrapper c-fixed-components">
         <header class="header header-sticky mb-4">
             <div class="container-fluid">
 
@@ -81,7 +81,7 @@
             </div>
         </header>
 
-        <div class="c-body">
+        <div class="c-body" style="margin-left: 300px">
             <main class="c-main">
                 @yield('content')
             </main>
