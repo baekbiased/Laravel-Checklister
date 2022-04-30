@@ -26,5 +26,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('pages', App\Http\Controllers\admin\PageController::class);
         Route::resource('checklist_groups', App\Http\Controllers\admin\ChecklistGroupController::class);
         Route::resource('checklist_groups.checklists', App\Http\Controllers\admin\ChecklistController::class);
+        Route::resource('checklists.tasks', App\Http\Controllers\admin\TaskController::class);
     });
 });
