@@ -41,7 +41,6 @@
                             </form>
                         </div>
                     </form>
-
                 </div>
 
                 <hr>
@@ -51,28 +50,7 @@
                     <div class="card-body">
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 preview active" role="tabpanel" id="preview-103">
-                                <table class="table table-striped">
-                                    <tbody>
-                                        @forelse($checklist->tasks as $task)
-                                            <tr>
-                                                <td>{{ $task->name }}</td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-primary" href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}">Edit</a>
-                                                    <form action="{{ route('admin.checklists.tasks.destroy', [$checklist, $task]) }}" method="POST" style="display: inline-block">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-sm btn-danger"
-                                                                onclick="return confirm( '{{ __('Are you sure?') }}' )"
-                                                                type="submit">{{__('Delete')}}</button>
-                                                    </form>
-
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <p class="text-center">No tasks available</p>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                @livewire('tasks-table', ['checklist' => $checklist])
                             </div>
 
                         </div>
