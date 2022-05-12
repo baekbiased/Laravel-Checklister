@@ -2,15 +2,13 @@
 
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('home') }}">
+            <a class="nav-link" href="{{ route('welcome') }}">
                 <svg class="nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
                 </svg> Dashboard
             </a>
         </li>
         @if(auth()->user()->is_admin)
-
-
 
             <li class="nav-title">{{ __('Manage Checklists') }}</li>
             @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $group)
@@ -66,9 +64,9 @@
 
             @endforeach
 
+        <hr>
         @endif
 
-        <hr>
         <li class="nav-title">{{ __('Other') }}</li>
         <li class="nav-group">
             <a class="nav-link" href="{{ route('logout') }}"
@@ -83,10 +81,6 @@
             </form>
 
         </li>
-
-
-
-
 
     </ul>
     <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
