@@ -28,7 +28,7 @@
                                         <input value="{{ $task->name }}" class="form-control" name="name" type="text">
 
                                         <label for="description">{{__('Description')}}</label>
-                                        <textarea class="form-control" name="description" rows="5">{{ $task->description }}</textarea>
+                                        <textarea class="form-control" name="description" id="task-textarea" rows="5">{{ $task->description }}</textarea>
 
                                     </div>
                                 </div>
@@ -46,4 +46,14 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#task-textarea' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection

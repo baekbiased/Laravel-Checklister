@@ -32,17 +32,18 @@
                         </div>
                         <div class="card-footer">
                             <button class="btn btn-sm btn-primary" type="submit">{{__('Save')}}</button>
-                            <form action="{{ route('admin.checklist_groups.destroy', $checklistGroup) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger"
-                                        onclick="return confirm( '{{ __('Are you sure?') }}' )"
-                                        type="submit">{{__('Delete this checklist group')}}</button>
-                            </form>
+
                         </div>
                     </form>
 
                 </div>
+                <form action="{{ route('admin.checklist_groups.destroy', $checklistGroup) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-sm btn-danger"
+                            onclick="return confirm( '{{ __('Are you sure?') }}' )"
+                            type="submit">{{__('Delete this checklist group')}}</button>
+                </form>
 
             </div>
         </div>
