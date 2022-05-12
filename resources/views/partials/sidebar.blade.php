@@ -9,14 +9,8 @@
             </a>
         </li>
         @if(auth()->user()->is_admin)
-            <li class="nav-title">{{ __('Admin') }}</li>
-            <li class="nav-group">
-                <a class="nav-link" href="{{route('admin.pages.index')}}">
-                    <svg class="nav-icon">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-file"></use>
-                    </svg> {{ __('Pages') }}
-                </a>
-            </li>
+
+
 
             <li class="nav-title">{{ __('Manage Checklists') }}</li>
             @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $group)
@@ -50,7 +44,7 @@
                     </ul>
                 </li>
             @endforeach
-        <hr>
+            <hr>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.checklist_groups.create') }}">
                     <svg class="nav-icon">
@@ -59,16 +53,23 @@
                 </a>
             </li>
 
-        @endif
-{{--        <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">--}}
-{{--                <svg class="nav-icon">--}}
-{{--                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>--}}
-{{--                </svg> {{ __('Base') }}</a>--}}
-{{--            <ul class="nav-group-items">--}}
-{{--                <li class="nav-item"><a class="nav-link" href="base/breadcrumb.html"><span class="nav-icon"></span> {{ __('Breadcrumb') }}</a></li>--}}
-{{--            </ul>--}}
-{{--        </li>--}}
+            <li class="nav-title">{{ __('Pages') }}</li>
+            @foreach(\App\Models\Page::all() as $page)
 
+                <li class="nav-group">
+                    <a class="nav-link" href="{{route('admin.pages.edit', $page)}}">
+                        <svg class="nav-icon">
+                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-file"></use>
+                        </svg> {{ $page->title }}
+                    </a>
+                </li>
+
+            @endforeach
+
+        @endif
+
+        <hr>
+        <li class="nav-title">{{ __('Other') }}</li>
         <li class="nav-group">
             <a class="nav-link" href="{{ route('logout') }}"
                onclick="event.preventDefault();
