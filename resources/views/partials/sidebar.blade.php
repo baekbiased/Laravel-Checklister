@@ -64,23 +64,19 @@
 
             @endforeach
 
-        <hr>
-        @endif
+            <li class="nav-title">{{ __('Manage data') }}</li>
+            <li class="nav-group">
+                <a class="nav-link" href="{{route('admin.users')}}">
+                    <svg class="nav-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                    </svg> {{ __('Users') }}
+                </a>
+            </li>
 
-        <li class="nav-title">{{ __('Other') }}</li>
-        <li class="nav-group">
-            <a class="nav-link" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                <svg class="nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
-                </svg> {{ __('Logout') }}
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
 
-        </li>
+
+                @endif
+
 
     </ul>
     <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>

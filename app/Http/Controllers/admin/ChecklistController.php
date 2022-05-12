@@ -23,7 +23,7 @@ class ChecklistController extends Controller
     {
 //        dd($request->name);
         $checklistGroup->checklists()->create($request->validated());
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 
 
@@ -39,13 +39,13 @@ class ChecklistController extends Controller
     {
 //        dd($request->toArray());
         $checklist->update($request->validated());
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 
 
     public function destroy(ChecklistGroup $checklistGroup, Checklist $checklist)
     {
         $checklist->delete();
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 }
