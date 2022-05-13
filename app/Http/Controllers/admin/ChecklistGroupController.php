@@ -26,7 +26,7 @@ class ChecklistGroupController extends Controller
     public function store(StoreChecklistGroupRequest $request)
     {
         ChecklistGroup::create($request->validated());
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 
 

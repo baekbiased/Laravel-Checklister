@@ -3,6 +3,7 @@
         <tbody>
         @forelse($tasks as $task)
             <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
+                <td>{{ $task->position }}.</td>
                 <td>{{ $task->name }}</td>
                 <td>
                     <a class="btn btn-sm btn-primary" href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}">Edit</a>
