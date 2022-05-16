@@ -14,7 +14,6 @@ class ChecklistController extends Controller
     public function show(Checklist $checklist): View
     {
         (new ChecklistService())->sync_checklist($checklist, auth()->id());
-
         return view('users.checklists.show', compact('checklist'));
     }
 }

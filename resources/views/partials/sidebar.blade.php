@@ -11,7 +11,7 @@
         @if(auth()->user()->is_admin)
 
             <li class="nav-title">{{ __('Manage Checklists') }}</li>
-            @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $group)
+            @foreach($admin_menu as $group)
 
                 <li class="nav-group show"><a class="nav-link" href="{{ route('admin.checklist_groups.edit', $group->id) }}">
                         <svg class="nav-icon ">
@@ -36,7 +36,10 @@
                             </li>
                         @endforeach
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.checklist_groups.checklists.create', $group) }}">
+                            <a class="nav-link"
+                               href="{{ route('admin.checklist_groups.checklists.create', $group) }}"
+                               style="padding: 1rem .5rem .5rem 76px"
+                            >
                                 <svg class="nav-icon">
                                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-playlist-add') }}"></use>
                                 </svg> {{ __('New Checklist') }}
