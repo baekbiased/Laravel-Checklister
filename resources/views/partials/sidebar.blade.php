@@ -76,19 +76,30 @@
                 </a>
             </li>
         @else
-            @foreach(\App\Models\ChecklistGroup::with(['checklists' => function($query){ $query->whereNull('user_id'); }])->get() as $group)
-                <li class="nav-title">{{ $group->name }}</li>
+            @foreach($user_menu as $group)
+                <li class="nav-title">{{ $group['name'] }}
+                    @if($group['is_new'])
+                        <span class="badge badge-sm bg-info ms-auto">NEW</span>
+                    @elseif($group['is_updated'])
+                        <span class="badge badge-sm bg-info ms-auto">UPD</span>
+                    @endif
+                </li>
 
                 <ul class="nav-group-items ">
-                        @foreach( $group->checklists as $checklist )
+                        @foreach( $group['checklists'] as $checklist )
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   href="{{ route('user.checklists.show', $checklist) }}"
+                                   href="{{ route('user.checklists.show', $checklist['id']) }}"
                                    style="padding: .5rem .5rem .5rem 76px"
                                 >
                                     <svg class="nav-icon">
                                         <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-arrow-right') }}"></use>
-                                    </svg> {{ $checklist->name }}
+                                    </svg> {{ $checklist['name'] }}
+                                    @if($checklist['is_new'])
+                                        <span class="badge badge-sm bg-info ms-auto">NEW</span>
+                                    @elseif($checklist['is_updated'])
+                                        <span class="badge badge-sm bg-info ms-auto">UPD</span>
+                                    @endif
                                 </a>
                             </li>
                         @endforeach
