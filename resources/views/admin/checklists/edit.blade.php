@@ -84,7 +84,7 @@
 
                                     <div class="form-group">
                                         <label for="Description">{{__('Description')}}</label>
-                                        <textarea class="form-control" id="task-textarea" name="description" rows="5">{{ old('description') }}</textarea>
+                                        <textarea class="form-control" id="textarea" name="description" rows="5">{{ old('description') }}</textarea>
                                     </div>
 
                                 </div>
@@ -105,13 +105,9 @@
 @endsection
 
 @section('scripts')
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#task-textarea' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
+
+    @include('admin.ckEditor')
+
 @endsection
 
 
