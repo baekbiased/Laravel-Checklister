@@ -84,7 +84,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.1.1/dist/js/coreui.min.js" crossorigin="anonymous"></script>
 
     @livewireScripts
-    <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
     @yield('scripts')
 
 </body>
