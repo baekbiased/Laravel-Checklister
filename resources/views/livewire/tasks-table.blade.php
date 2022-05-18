@@ -1,9 +1,18 @@
 <div>
-    <table class="table table-striped" wire:sortable="updateTaskOrder">
+    <table class="table table-striped" >
         <tbody>
         @forelse($tasks as $task)
-            <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
-                <td>{{ $task->position }}.</td>
+            <tr>
+                <td>
+                    @if( $task->position > 1 )
+                    <button class="btn" wire:click.prevent="task_up({{ $task->id }})">&uarr;</button>
+                    @endif
+
+                    @if( $task->position < $tasks->max('position') )
+                    <button class="btn" wire:click.prevent="task_down({{ $task->id }})">&darr;</button>
+                    @endif
+                </td>
+{{--                <td>{{ $task->position }}.</td>--}}
                 <td>{{ $task->name }}</td>
                 <td>
                     <a class="btn btn-sm btn-primary" href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}">Edit</a>
