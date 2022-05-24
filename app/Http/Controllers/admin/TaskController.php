@@ -10,23 +10,12 @@ use App\Models\Task;
 class TaskController extends Controller
 {
 
-    public function create()
-    {
-        //
-    }
-
-
     public function store(StoreTaskRequest $request, Checklist $checklist)
     {
         $position = $checklist->tasks()->where('user_id', NULL)->max('position') + 1;
         $checklist->tasks()->create($request->validated() + ['position' => $position]);
+
         return redirect()->route('admin.checklist_groups.checklists.edit', [$checklist->checklist_group_id, $checklist]);
-    }
-
-
-    public function show($id)
-    {
-        //
     }
 
 
@@ -53,4 +42,5 @@ class TaskController extends Controller
         return redirect()->route('admin.checklist_groups.checklists.edit', [$checklist->checklist_group_id, $checklist]);
 
     }
+
 }
